@@ -1,0 +1,7 @@
+videos/
+
+# Ignore large model files
+models/*.pt
+
+# Ignore output videos
+runs/outputs/*.mp4
