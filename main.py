@@ -6,15 +6,18 @@ import os
 
 model = YOLO("models/yolo11l-pose.pt")
 
-video_name='demo2.mp4'
+video_name='demo4.mp4'
 video_path = f"videos/{video_name}"
 # video_path = "/Users/manohar/Documents/GCP_ML_Engineer/Code/Lab/11_usecase/videos/demo2.mp4"
 cap = cv2.VideoCapture(video_path)
+width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = int(cap.get(cv2.CAP_PROP_FPS))
 
-width, height = int(cap.get(3)), int(cap.get(4))
-fps = cap.get(cv2.CAP_PROP_FPS)
+# Efficient codec
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 os.makedirs('runs/outputs', exist_ok=True)
-out = cv2.VideoWriter(f"runs/outputs/{video_name}", cv2.VideoWriter_fourcc(*'mp4v'), fps, (width, height))
+out = cv2.VideoWriter(f"runs/outputs/{video_name}", fourcc, fps, (width, height))
 person_history = {}
 
 while True:
@@ -72,7 +75,7 @@ while True:
                 cv2.putText(annotated_frame, 
                     f"ID: {track_id} | RULA: {rula_score} ", 
                     (x1, y1 - 45),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 1)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
                 # Display Fatigue Status
                 cv2.putText(annotated_frame, 
@@ -101,13 +104,13 @@ while True:
                                      1 - alpha, 0)
         combined[mask] = blended_pixels
 
-    cv2.imshow("Custom Heatmap on RULA", combined)
+    # cv2.imshow("Custom Heatmap on RULA", combined)
     out.write(combined)
 
     # delay=int(1000/fps)
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+    # if cv2.waitKey(1) & 0xFF == ord('q'):
+    #     break
 
 cap.release()
 out.release()

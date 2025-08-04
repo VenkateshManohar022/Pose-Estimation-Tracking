@@ -5,3 +5,5 @@ models/*.pt
 
 # Ignore output videos
 runs/outputs/*.mp4
+
+__pycache__/
