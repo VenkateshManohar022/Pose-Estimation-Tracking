@@ -104,13 +104,13 @@ while True:
                                      1 - alpha, 0)
         combined[mask] = blended_pixels
 
-    # cv2.imshow("Custom Heatmap on RULA", combined)
+    cv2.imshow("Custom Heatmap on RULA", combined)
     out.write(combined)
 
     # delay=int(1000/fps)
 
-    # if cv2.waitKey(1) & 0xFF == ord('q'):
-    #     break
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
 cap.release()
 out.release()

@@ -90,7 +90,7 @@ This solution can be deployed in:
 - OpenCV (for Processing, Boxes, heatmap overlays)
 - Ultralytics YOLO-Pose / MediaPipe / OpenPose
 - NumPy
-- Matplotlib 
+- Object-Tracking Technique
 
 ## ✅ Setup Instructions
 
