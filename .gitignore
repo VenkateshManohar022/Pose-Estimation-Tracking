@@ -9,3 +9,6 @@ runs/outputs/*.mp4
 
 # Ignore Python bytecode cache folders
 __pycache__/
+
+ignore_dummy.py
+ignore_dummy.ipynb
