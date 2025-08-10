@@ -1,11 +1,11 @@
 # Ignore all videos inside the videos/ directory
-videos/
+# videos/
 
 # Ignore all PyTorch model files in models/ (e.g., YOLO, custom .pt)
-models/*.pt
+# models/*.pt
 
 # Ignore all output videos generated during experiments
-runs/outputs/*.mp4
+# runs/outputs/*.mp4
 
 # Ignore Python bytecode cache folders
 __pycache__/
